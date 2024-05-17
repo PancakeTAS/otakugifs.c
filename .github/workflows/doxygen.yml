@@ -1,4 +1,4 @@
-name: nekos-best.c doxygen
+name: otakugifs.c doxygen
 on: [push]
 
 permissions:

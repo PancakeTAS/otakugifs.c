@@ -1,17 +1,17 @@
-#define NEKOSBEST_IMPL
-#include <nekosbest.h>
+#define OTAKUGIFS_IMPL
+#include <otakugifs.h>
 #include "tests_common.h"
 
-#define URL "https://nekos.best/api/v2/neko/4c8285d0-60a9-4ccf-ac61-3bf744fafa03.png"
-#define SIZE 1138412
+#define URL "https://cdn.otakugifs.xyz/gifs/kiss/NGLVWgfzrI.gif"
+#define SIZE 608706
 
 int main() {
     fprintf(stderr, WHITE BOLD "Downloading image... ");
 
     // download image
-    nekos_http_response http_response;
-    nekos_status status = nekos_download(&http_response, URL);
-    if (status != NEKOS_OK) {
+    otaku_http_response http_response;
+    otaku_status status = otaku_download(&http_response, URL);
+    if (status != OTAKU_OK) {
         fprintf(stderr, RED "failed!" BOLD " Error code: %d\n", status);
         return EXIT_FAILURE;
     }
@@ -25,7 +25,7 @@ int main() {
     fprintf(stderr, WHITE BOLD "-> filesize matches\n");
 
     // free response
-    nekos_free_http_response(&http_response);
+    otaku_free_http_response(&http_response);
 
     return EXIT_SUCCESS;
 }

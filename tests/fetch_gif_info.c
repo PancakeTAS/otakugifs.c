@@ -1,32 +1,24 @@
-#define NEKOSBEST_IMPL
-#include <nekosbest.h>
+#define OTAKUGIFS_IMPL
+#include <otakugifs.h>
 #include "tests_common.h"
 
 int main() {
-    fprintf(stderr, WHITE BOLD "Fetching gif info from kiss category... ");
-
-    // create endpoint
-    nekos_endpoint endpoint;
-    endpoint.name = "kiss";
-    endpoint.format = NEKOS_GIF;
+    fprintf(stderr, WHITE BOLD "Fetching gif info from kiss reaction... ");
 
     // get gif
-    nekos_result_list results;
-    nekos_status status = nekos_category(&results, &endpoint, 4);
-    if (status != NEKOS_OK) {
+    otaku_result result;
+    otaku_status status = otaku_reaction(&result, "kiss", OTAKU_GIF);
+    if (status != OTAKU_OK) {
         fprintf(stderr, RED "failed!" BOLD " Error code: %d\n", status);
         return EXIT_FAILURE;
     }
     fprintf(stderr, GREEN "success.\n");
 
     // print results
-    fprintf(stderr, WHITE BOLD "-> \\\n");
-    for (size_t i = 0; i < results.len; i++) {
-        fprintf(stderr, PINK BOLD "  %s" WHITE BOLD " from " CYAN BOLD "%s\n", results.responses[i].url, results.responses[i].source.gif->anime_name);
-    }
+    fprintf(stderr, WHITE BOLD "-> " PINK BOLD "%s\n", result.url);
 
     // free results
-    nekos_free_results(&results);
+    otaku_free_result(&result);
 
     return EXIT_SUCCESS;
 }

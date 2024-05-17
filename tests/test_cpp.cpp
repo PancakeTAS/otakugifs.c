@@ -1,5 +1,5 @@
-#define NEKOSBEST_IMPL
-#include <nekosbest.h>
+#define OTAKUGIFS_IMPL
+#include <otakugifs.h>
 #include "tests_common.h"
 
 int main() {
